@@ -1,0 +1,68 @@
+project:
+  name: urban-grid-climate-storage
+  city: tokyo
+  timezone: Asia/Tokyo
+
+paths:
+  load_data: data_raw/TEPCO_Load_2016_2022_hourly_with_units.csv
+  weather_data: data_raw/Tokyo_TempRH_2016_2022_hourly_wide_clean.csv
+  processed_data: data_processed/tokyo_model_dataset.csv
+  output_dir: outputs
+
+columns:
+  datetime: datetime
+  load: load_mw
+  temperature: temperature_c
+  relative_humidity: relative_humidity_percent
+
+data:
+  start_date: "2016-01-01"
+  end_date: "2022-12-31"
+  frequency: "h"
+
+features:
+  use_temperature: true
+  use_relative_humidity: true
+  use_calendar_features: true
+  use_lag_features: true
+  lag_hours:
+    - 1
+    - 24
+    - 168
+
+split:
+  train_years:
+    - 2016
+    - 2017
+    - 2018
+    - 2019
+  validation_years:
+    - 2020
+  test_years:
+    - 2021
+    - 2022
+
+models:
+  baseline:
+    enabled: true
+    methods:
+      - persistence_24h
+      - mean_by_month_hour
+      - random_forest
+
+  lstm:
+    enabled: true
+    sequence_length: 168
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.2
+    batch_size: 64
+    epochs: 50
+    learning_rate: 0.001
+
+evaluation:
+  metrics:
+    - MAE
+    - RMSE
+    - sMAPE
+    - Top1pct_MAE
