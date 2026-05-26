@@ -13,6 +13,7 @@ paths:
   baseline_metrics: outputs/model_results/baseline_metrics.csv
   baseline_predictions_test: outputs/predictions/baseline_predictions_test.csv
   modeling_figures_dir: outputs/figures/modeling
+  model_evaluation_report: outputs/reports/load_forecasting_model_evaluation.md
   output_dir: outputs
 
 raw_columns:

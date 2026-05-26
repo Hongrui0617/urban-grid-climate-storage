@@ -69,6 +69,7 @@ Run the current config-driven dataset and EDA workflow:
 PYTHONPATH=src python scripts/build_model_dataset.py --config configs/tokyo.yaml
 PYTHONPATH=src python scripts/run_eda.py --config configs/tokyo.yaml
 PYTHONPATH=src python scripts/train_baselines.py --config configs/tokyo.yaml
+PYTHONPATH=src python scripts/write_model_report.py --config configs/tokyo.yaml
 ```
 
 Generated datasets and outputs are written to `data_processed/` and `outputs/`. These directories are intentionally ignored by Git.
@@ -148,6 +149,7 @@ python scripts/check_config.py --config configs/tokyo.yaml
 PYTHONPATH=src python scripts/build_model_dataset.py --config configs/tokyo.yaml
 PYTHONPATH=src python scripts/run_eda.py --config configs/tokyo.yaml
 PYTHONPATH=src python scripts/train_baselines.py --config configs/tokyo.yaml
+PYTHONPATH=src python scripts/write_model_report.py --config configs/tokyo.yaml
 ```
 
 生成的数据集和输出会写入 `data_processed/` 和 `outputs/`。这些目录已被 Git 忽略。
