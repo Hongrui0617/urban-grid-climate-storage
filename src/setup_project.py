@@ -1,6 +1,6 @@
 from pathlib import Path
 
-PROJECT_ROOT = Path("/Users/aaron/Desktop/2025 Fall Tokyo/研究/step 3")
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 FOLDERS = [
     "data_raw",
@@ -8,9 +8,10 @@ FOLDERS = [
     "outputs",
     "outputs/figures",
     "outputs/tables",
+    "outputs/metrics",
     "outputs/models",
     "logs",
-    "src"
+    "src",
 ]
 
 def main():

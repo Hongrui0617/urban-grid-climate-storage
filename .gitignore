@@ -16,20 +16,36 @@ venv/
 env/
 .env
 
-# Raw and processed data
-data_raw/
-data_processed/
+# Local data directories
+data/
+
+data_raw/**
+!data_raw/
+!data_raw/README.md
+
+data_processed/**
+!data_processed/
+!data_processed/README.md
 
 # Generated outputs
-outputs/
+outputs/**
+!outputs/
+!outputs/README.md
+!outputs/figures/
+!outputs/figures/.gitkeep
+!outputs/tables/
+!outputs/tables/.gitkeep
+!outputs/metrics/
+!outputs/metrics/.gitkeep
+!outputs/models/
+!outputs/models/.gitkeep
 
-# Large files
+# Large data files
 *.csv
 *.nc
 *.grib
 *.grb
-*.h5
-*.hdf5
+*.parquet
 
 # Model files
 *.pt
@@ -37,6 +53,8 @@ outputs/
 *.ckpt
 *.pkl
 *.joblib
+*.h5
+*.hdf5
 
 # Logs
 *.log
@@ -45,4 +63,6 @@ logs/
 # IDE
 .vscode/
 .idea/
+
+# Temporary notes
 笔记.py
