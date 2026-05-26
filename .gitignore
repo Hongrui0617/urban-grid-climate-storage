@@ -33,10 +33,16 @@ outputs/**
 !outputs/README.md
 !outputs/figures/
 !outputs/figures/.gitkeep
+!outputs/figures/modeling/
+!outputs/figures/modeling/.gitkeep
 !outputs/tables/
 !outputs/tables/.gitkeep
 !outputs/metrics/
 !outputs/metrics/.gitkeep
+!outputs/model_results/
+!outputs/model_results/.gitkeep
+!outputs/predictions/
+!outputs/predictions/.gitkeep
 !outputs/reports/
 !outputs/reports/.gitkeep
 !outputs/models/

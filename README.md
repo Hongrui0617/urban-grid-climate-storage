@@ -68,11 +68,12 @@ Run the current config-driven dataset and EDA workflow:
 ```bash
 PYTHONPATH=src python scripts/build_model_dataset.py --config configs/tokyo.yaml
 PYTHONPATH=src python scripts/run_eda.py --config configs/tokyo.yaml
+PYTHONPATH=src python scripts/train_baselines.py --config configs/tokyo.yaml
 ```
 
 Generated datasets and outputs are written to `data_processed/` and `outputs/`. These directories are intentionally ignored by Git.
 
-Model training is intentionally not part of this step. Existing prototype modeling scripts will be refactored into the config-driven workflow in a later stage.
+Current baseline modeling is config-driven. Prototype LSTM scripts will be refactored into this workflow in a later stage.
 
 ### License
 
@@ -146,11 +147,12 @@ python scripts/check_config.py --config configs/tokyo.yaml
 ```bash
 PYTHONPATH=src python scripts/build_model_dataset.py --config configs/tokyo.yaml
 PYTHONPATH=src python scripts/run_eda.py --config configs/tokyo.yaml
+PYTHONPATH=src python scripts/train_baselines.py --config configs/tokyo.yaml
 ```
 
 生成的数据集和输出会写入 `data_processed/` 和 `outputs/`。这些目录已被 Git 忽略。
 
-本阶段暂不运行模型训练。已有的 prototype 模型脚本会在后续阶段被重构进 config-driven 工作流。
+当前 baseline 建模已经是 config-driven。已有的 prototype LSTM 脚本会在后续阶段被重构进这个工作流。
 
 ### 许可证
 

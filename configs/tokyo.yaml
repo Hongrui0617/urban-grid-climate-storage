@@ -10,6 +10,9 @@ paths:
   data_quality_report: outputs/reports/data_quality_report.md
   eda_figures_dir: outputs/figures/eda
   eda_tables_dir: outputs/tables/eda
+  baseline_metrics: outputs/model_results/baseline_metrics.csv
+  baseline_predictions_test: outputs/predictions/baseline_predictions_test.csv
+  modeling_figures_dir: outputs/figures/modeling
   output_dir: outputs
 
 raw_columns:
@@ -48,6 +51,12 @@ features:
     - 168
 
 split:
+  train_start: "2016-04-01 00:00:00"
+  train_end: "2020-12-31 23:00:00"
+  validation_start: "2021-01-01 00:00:00"
+  validation_end: "2021-12-31 23:00:00"
+  test_start: "2022-01-01 00:00:00"
+  test_end: "2022-12-31 23:00:00"
   train_years:
     - 2016
     - 2017
@@ -63,9 +72,38 @@ models:
   baseline:
     enabled: true
     methods:
-      - seasonal_naive_24
-      - seasonal_naive_168
-      - random_forest
+      - previous_day_same_hour
+      - previous_week_same_hour
+      - ridge_climate
+      - hist_gradient_boosting_climate
+      - ridge_forecast
+      - hist_gradient_boosting_forecast
+    feature_sets:
+      climate:
+        - temperature_c
+        - rh_percent
+        - hour
+        - dayofweek
+        - month
+        - is_weekend
+      forecast:
+        - temperature_c
+        - rh_percent
+        - hour
+        - dayofweek
+        - month
+        - is_weekend
+        - lag_1
+        - lag_24
+        - lag_168
+    ridge:
+      alpha: 1.0
+    hist_gradient_boosting:
+      max_iter: 300
+      learning_rate: 0.05
+      max_leaf_nodes: 31
+      l2_regularization: 0.0
+      random_state: 42
 
   lstm:
     enabled: true
@@ -82,8 +120,17 @@ evaluation:
   metrics:
     - MAE
     - RMSE
-    - sMAPE
-    - Top1pct_MAE
+    - MAPE
+    - R2
+  segments:
+    - overall
+    - summer_JJA
+    - winter_DJF
+    - hot_hours_temp_ge_30
+    - hot_hours_temp_ge_33
+    - peak_top_5_percent_load
+    - weekday
+    - weekend
 
 eda:
   figure_dpi: 150
