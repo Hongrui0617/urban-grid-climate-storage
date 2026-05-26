@@ -6,9 +6,20 @@ project:
 paths:
   load_data: data_raw/TEPCO_Load_2016_2022_hourly_with_units.csv
   weather_data: data_raw/Tokyo_TempRH_2016_2022_hourly_wide_clean.csv
-  processed_data: data_processed/merged_dataset_hourly.csv
-  processed_parquet: data_processed/merged_dataset_hourly.parquet
+  model_dataset: data_processed/tokyo_model_dataset.csv
+  data_quality_report: outputs/reports/data_quality_report.md
+  eda_figures_dir: outputs/figures/eda
+  eda_tables_dir: outputs/tables/eda
   output_dir: outputs
+
+raw_columns:
+  load:
+    datetime: datetime_jst
+    load: load_MW
+  weather:
+    datetime: datetime
+    temperature: temp_c
+    relative_humidity: rh_percent
 
 columns:
   datetime: timestamp
@@ -20,6 +31,11 @@ data:
   start_date: "2016-01-01"
   end_date: "2022-12-31"
   frequency: "h"
+  weather_interpolate_limit_hours: 6
+
+quality:
+  relative_humidity_min: 0
+  relative_humidity_max: 100
 
 features:
   use_temperature: true
@@ -68,3 +84,9 @@ evaluation:
     - RMSE
     - sMAPE
     - Top1pct_MAE
+
+eda:
+  figure_dpi: 150
+  temperature_bin_width_c: 2
+  top_load_percentile: 0.95
+  top_peak_events: 50

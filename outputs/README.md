@@ -8,6 +8,7 @@ The workflow writes files into:
 outputs/figures/
 outputs/tables/
 outputs/metrics/
+outputs/reports/
 outputs/models/
 ```
 

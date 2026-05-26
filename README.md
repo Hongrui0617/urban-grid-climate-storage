@@ -63,17 +63,16 @@ Check the configuration:
 python scripts/check_config.py --config configs/tokyo.yaml
 ```
 
-Run the current historical load forecasting workflow:
+Run the current config-driven dataset and EDA workflow:
 
 ```bash
-python src/build_dataset.py
-python src/explore_dataset.py
-python src/train_baselines.py
-python src/train_lstm.py
-python src/evaluate_models.py
+PYTHONPATH=src python scripts/build_model_dataset.py --config configs/tokyo.yaml
+PYTHONPATH=src python scripts/run_eda.py --config configs/tokyo.yaml
 ```
 
 Generated datasets and outputs are written to `data_processed/` and `outputs/`. These directories are intentionally ignored by Git.
+
+Model training is intentionally not part of this step. Existing prototype modeling scripts will be refactored into the config-driven workflow in a later stage.
 
 ### License
 
@@ -142,17 +141,16 @@ data_raw/Tokyo_TempRH_2016_2022_hourly_wide_clean.csv
 python scripts/check_config.py --config configs/tokyo.yaml
 ```
 
-运行当前历史负荷预测流程：
+运行当前 config-driven 数据集构建和 EDA 流程：
 
 ```bash
-python src/build_dataset.py
-python src/explore_dataset.py
-python src/train_baselines.py
-python src/train_lstm.py
-python src/evaluate_models.py
+PYTHONPATH=src python scripts/build_model_dataset.py --config configs/tokyo.yaml
+PYTHONPATH=src python scripts/run_eda.py --config configs/tokyo.yaml
 ```
 
 生成的数据集和输出会写入 `data_processed/` 和 `outputs/`。这些目录已被 Git 忽略。
+
+本阶段暂不运行模型训练。已有的 prototype 模型脚本会在后续阶段被重构进 config-driven 工作流。
 
 ### 许可证
 
