@@ -37,6 +37,8 @@ outputs/**
 !outputs/tables/.gitkeep
 !outputs/metrics/
 !outputs/metrics/.gitkeep
+!outputs/reports/
+!outputs/reports/.gitkeep
 !outputs/models/
 !outputs/models/.gitkeep
 

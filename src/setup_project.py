@@ -9,6 +9,7 @@ FOLDERS = [
     "outputs/figures",
     "outputs/tables",
     "outputs/metrics",
+    "outputs/reports",
     "outputs/models",
     "logs",
     "src",
