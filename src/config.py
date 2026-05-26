@@ -1,6 +1,6 @@
 from pathlib import Path
 
-PROJECT_ROOT = Path("/Users/aaron/Desktop/2025 Fall Tokyo/研究/step 3")
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 DATA_RAW = PROJECT_ROOT / "data_raw"
 DATA_PROCESSED = PROJECT_ROOT / "data_processed"
